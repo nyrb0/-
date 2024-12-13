@@ -10,7 +10,7 @@ const App = () => {
         (localStorage.getItem('language') as LanguageType) || 'Python'
     );
     const [output, setOutput] = useState<OutputType>();
-    console.log(output, 'output');
+
     return (
         <div>
             <h1 className='df jcc'>Editor</h1>

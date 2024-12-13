@@ -1,28 +1,61 @@
 {
-    "run-code": [
-        {
-            "id": "175e",
-            "language": "Python",
-            "output": "cHJpbnQoJ25mam52amZudmpmbmpmbicp"
-        },
-        {
-            "id": "f81c",
-            "language": "Python",
-            "output": "# main.py\nfrom flask import Flask, request, jsonify\nimport subprocess\n\napp = Flask(__name__)\n\n@app.route('/run-python', methods=['POST'])\ndef run_python_code():\n    code = request.json.get('code')\n    try:\n        # Выполнение Python кода\n        result = subprocess.check_output(['python3', '-c', code], stderr=subprocess.STDOUT)\n        return jsonify({'result': result.decode('utf-8')})\n    except subprocess.CalledProcessError as e:\n        return jsonify({'error': e.output.decode('utf-8')}), 400\n\nif __name__ == '__main__':\n    app.run(host='0.0.0.0', port=8080)\n"
-        }
-    ],
-    "fake-result": [
-        {
-            "id": 1,
-            "language": "python",
-            "code": "print('Hello, World!')",
-            "result": "Hello, World!\n"
-        },
-        {
-            "id": 2,
-            "language": "go",
-            "code": "package main\nimport \"fmt\"\nfunc main() {\n    fmt.Println(\"Hello, World!\")\n}",
-            "result": "Hello, World!\n"
-        }
-    ]
+  "run-code": [
+    {
+      "id": "175e",
+      "language": "Python",
+      "output": "cHJpbnQoJ25mam52amZudmpmbmpmbicp"
+    },
+    {
+      "id": "f81c",
+      "language": "Python",
+      "output": "# main.py\nfrom flask import Flask, request, jsonify\nimport subprocess\n\napp = Flask(__name__)\n\n@app.route('/run-python', methods=['POST'])\ndef run_python_code():\n    code = request.json.get('code')\n    try:\n        # Выполнение Python кода\n        result = subprocess.check_output(['python3', '-c', code], stderr=subprocess.STDOUT)\n        return jsonify({'result': result.decode('utf-8')})\n    except subprocess.CalledProcessError as e:\n        return jsonify({'error': e.output.decode('utf-8')}), 400\n\nif __name__ == '__main__':\n    app.run(host='0.0.0.0', port=8080)\n"
+    },
+    {
+      "id": "6c3f",
+      "language": "Python",
+      "output": ""
+    },
+    {
+      "id": "395f",
+      "language": "Python",
+      "output": " v fv fvfnvufv"
+    },
+    {
+      "id": "db71",
+      "language": "Python",
+      "output": " v fv fvfnvufv\n\n\ncnfnf"
+    },
+    {
+      "id": "3f09",
+      "language": "Python",
+      "output": " fd bf fb df",
+      "status": "success"
+    },
+    {
+      "id": "ab13",
+      "language": "Python",
+      "output": "cfv",
+      "status": "success"
+    },
+    {
+      "id": "f897",
+      "language": "Python",
+      "output": "vrvv",
+      "status": "success"
+    }
+  ],
+  "fake-result": [
+    {
+      "id": 1,
+      "language": "python",
+      "code": "print('Hello, World!')",
+      "result": "Hello, World!\n"
+    },
+    {
+      "id": 2,
+      "language": "go",
+      "code": "package main\nimport \"fmt\"\nfunc main() {\n    fmt.Println(\"Hello, World!\")\n}",
+      "result": "Hello, World!\n"
+    }
+  ]
 }

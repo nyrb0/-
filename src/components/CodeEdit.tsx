@@ -6,32 +6,27 @@ import { tokyoNight } from '@uiw/codemirror-theme-tokyo-night';
 import { material } from '@uiw/codemirror-theme-material';
 import axios from 'axios';
 import PrimaryButton from './PrimaryButton';
-
-type Output = {
-    id: number;
-    output: string;
-    language: string;
-};
+import { OutputType } from '../types/types';
 
 interface CodeIditProps {
     language: LanguageType;
-    data: (d: Output) => void;
+    data: (d: OutputType) => void;
 }
 const CodeEdit: FC<CodeIditProps> = ({ language, data }) => {
     const [code, setCode] = useState('');
-    const [error, setError] = useState<{ status: 'error'; error: string }>();
 
     const handleRun = async () => {
         try {
             const response = await axios.post('http://localhost:3000/run-code', {
                 language,
                 output: code,
+                status: 'success',
             });
-            const res = response.data;
-            data(res);
+            if (response.status === 201) {
+                data(response.data);
+            }
         } catch (err) {
-            setError({ status: 'error', error: `Language ${language} is not supported` });
-            throw new Error('Language ${language} is not supported');
+            throw new Error(`Language ${language} is not supported`);
         }
     };
 

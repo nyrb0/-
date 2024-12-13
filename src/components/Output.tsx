@@ -9,7 +9,7 @@ interface OutputProps {
 const Output: FC<OutputProps> = ({ output }) => {
     const [height, setHeight] = useState(150);
     const outputRef = useRef<HTMLDivElement>(null);
-    const [isOpenOutput, setIsOpenOutput] = useState(false);
+    const [isOpenOutput, setIsOpenOutput] = useState(true);
     const resizeTerminal = (e: React.MouseEvent) => {
         const startY = e.clientY;
         const startHeight = height;
@@ -25,6 +25,7 @@ const Output: FC<OutputProps> = ({ output }) => {
         window.addEventListener('mousemove', onMouseMove);
         window.addEventListener('mouseup', onMouseUp);
     };
+
     return (
         <>
             {isOpenOutput ? (
@@ -33,11 +34,27 @@ const Output: FC<OutputProps> = ({ output }) => {
                         X
                     </button>
                     <div className={s.resizeHandle} onMouseDown={resizeTerminal} ref={outputRef} />
-                    <h2>Результат:</h2>
-                    {output?.output}
+                    <h2>
+                        Результат:{' '}
+                        <span
+                            style={{
+                                fontSize: 10,
+                                color: output?.status === 'success' ? 'green' : output?.status === 'error' ? 'red' : ''s,
+                            }}
+                        >
+                            {output?.status === 'success' ? 'успешно' : output?.status === 'error' ? 'ошибка' : ''}
+                        </span>
+                    </h2>
+                    <p
+                        style={{
+                            color: output?.status === 'success' ? '#fff' : output?.status === 'error' ? 'red' : '',
+                        }}
+                    >
+                        {output?.output}
+                    </p>
                 </div>
             ) : (
-                <button className={s.open} onClick={() => setIsOpenOutput(true)}>
+                <button className={s.open} onClick={() => setIsOpenOutput(true)} aria-label='Открыть терминал'>
                     🖥️
                 </button>
             )}
