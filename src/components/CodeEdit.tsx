@@ -3,7 +3,6 @@ import { FC, useState } from 'react';
 import { LanguageType } from '../types/languageKey.type';
 import { languagesList } from '../constant/languageList';
 import { tokyoNight } from '@uiw/codemirror-theme-tokyo-night';
-import { material } from '@uiw/codemirror-theme-material';
 import axios from 'axios';
 import PrimaryButton from './PrimaryButton';
 import { OutputType } from '../types/types';

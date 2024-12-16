@@ -1,4 +1,4 @@
-import { ChangeEvent, FC } from 'react';
+import { FC } from 'react';
 import { LanguageType } from '../types/languageKey.type';
 import { languagesList } from '../constant/languageList';
 import PrimaryButton from './PrimaryButton';
