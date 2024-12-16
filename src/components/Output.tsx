@@ -39,7 +39,7 @@ const Output: FC<OutputProps> = ({ output }) => {
                         <span
                             style={{
                                 fontSize: 10,
-                                color: output?.status === 'success' ? 'green' : output?.status === 'error' ? 'red' : ''s
+                                color: output?.status === 'success' ? 'green' : output?.status === 'error' ? 'red' : '',
                             }}
                         >
                             {output?.status === 'success' ? 'успешно' : output?.status === 'error' ? 'ошибка' : ''}
